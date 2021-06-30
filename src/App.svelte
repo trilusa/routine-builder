@@ -1,5 +1,6 @@
 <script>
 	import Meditation from "./components/Meditation.svelte";
+	import Nav from "./components/Nav.svelte";
 	import Reminders from "./components/Reminders.svelte";
 	import TextArea from "./components/TextArea.svelte";
 
@@ -9,6 +10,7 @@
 </script>
 
 <main>
+	<Nav/>
 	<Reminders/>
 	<TextArea/>
 	<Meditation/>

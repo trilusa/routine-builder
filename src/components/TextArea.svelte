@@ -5,6 +5,6 @@
 
 <style>
     textarea {
-        width: 100%;
+        width: 650px;
     }
 </style>

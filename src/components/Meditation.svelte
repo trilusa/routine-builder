@@ -2,9 +2,9 @@
     import AudioPlayer from "./AudioPlayer.svelte";
 
     let tracks = [
-		'https://s3.amazonaws.com/meditation-timers/5min-Meditation-Timer-Bowl.mp3',
-		'https://s3.amazonaws.com/meditation-timers/10min-Meditation-Timer-Bowl.mp3',
-		'https://s3.amazonaws.com/meditation-timers/20min-Meditation-Timer-Bowl.mp3'
+		'https://s3.amazonaws.com/meditation-timers/5min-Meditation-Timer-Bell.mp3',
+        'https://s3.amazonaws.com/meditation-timers/10min-Meditation-Timer-Bell.mp3',
+        'https://s3.amazonaws.com/meditation-timers/20min-Meditation-Timer-Bell.mp3'
 	];
     let track = tracks[0];
     
