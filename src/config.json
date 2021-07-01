@@ -1,0 +1,10 @@
+[
+    {
+        "type": "Table", 
+        "props": {
+            "table": [
+                        {"header": "Morning", "entries": ["Meds", "Brush", "Water", "Sun"]},
+                        {"header": "Afternoon", "entries": ["Walk", "Meditate", "Water", "Lunch"]}
+                    ]} 
+    }
+]
