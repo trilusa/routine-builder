@@ -3,12 +3,13 @@
 	import AudioPlayer from "./components/AudioPlayer.svelte";
 	import Meditation from "./components/Meditation.svelte";
 	import Nav from "./components/Nav.svelte";
-	import Table from "./components/Reminders.svelte";
+	import Table from "./components/Table.svelte";
 	import TextArea from "./components/TextArea.svelte";
 	
 	let components = [
 						{type: Nav, props: {}},
-						{type: Table, props: {table: [ {header: "Morning", entries: ["Meds", "Brush", "Water", "Sun"]},
+						{type: Table, props: {  id: "reminder",
+												table: [ {header: "Morning", entries: ["Meds", "Brush", "Water", "Sun"]},
 													   {header: "Afternoon", entries: ["Walk", "Meditate", "Water", "Lunch"]} ]}
 						},
 						{type: TextArea, props: {}},
@@ -17,13 +18,21 @@
 
 	window.onbeforeunload = function () {
   		return 'Refresh?';
- 	}
+	 }
+	 
+	function update(event){
+		//TODO, add a way of updating a db
+		// let new_comp = components.filter(c => c.props.id === event.detail.id);
+		// components.map(obj => obj.props.id === event.detail.id ? obj.props=event.detail : obj=obj);
+		console.log(components);
+	}
 </script>
 
-
-{#each components as component}
-	<svelte:component this={component.type} {...component.props}/>
-{/each}
+<main>
+	{#each components as component}
+		<svelte:component this={component.type} on:updated={update} {...component.props}/>
+	{/each}
+</main>
 
 
 <style>

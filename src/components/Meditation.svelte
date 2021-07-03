@@ -13,8 +13,20 @@
 
 <div>
     <h2>Meditation</h2>
-    <button on:click={() => track = tracks[0]}>5 min</button>
-    <button on:click={() => track = tracks[1]}>10 min</button>
-    <button on:click={() => track = tracks[2]}>20 min</button>
+    <button class:selected="{track === tracks[0]}" on:click={() => track = tracks[0]}>5 min</button>
+    <button class:selected="{track === tracks[1]}" on:click={() => track = tracks[1]}>10 min</button>
+    <button class:selected="{track === tracks[2]}" on:click={() => track = tracks[2]}>20 min</button>
     <AudioPlayer src={track}/>
 </div>
+
+<style>
+    button {
+        background-color:lightgray;
+        color: black;
+    }
+
+    .selected {
+        background-color:rgb(51, 51, 250);
+        color: white;
+    }
+</style>
