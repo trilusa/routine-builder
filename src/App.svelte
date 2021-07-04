@@ -8,14 +8,19 @@
 	
 	let components = [
 						{type: Nav, props: {}},
-						{type: Table, props: {  id: "reminder",
-												table: [ {header: "Morning", entries: ["Meds", "Brush", "Water", "Sun"]},
-													   {header: "Afternoon", entries: ["Walk", "Meditate", "Water", "Lunch"]} ]}
+						{type: Table, props: {  id: "reminder-table",
+												headers: ["Morning", "Afternoon", "Night"],
+												table: [["Meds", "Brush", "Water", "Sun"],
+														["Walk", "Meditate", "Water", "Lunch"],
+														["Meds", "Meditate", "Read", "Stretch"]]}
+
+												// table: [ {header: "Morning", entries: ["Meds", "Brush", "Water", "Sun"]},
+												// 	   {header: "Afternoon", entries: ["Walk", "Meditate", "Water", "Lunch"]} ]}
 						},
 						{type: TextArea, props: {}},
 						{type: Meditation, props: {}}
 					];
-
+					
 	window.onbeforeunload = function () {
   		return 'Refresh?';
 	 }
@@ -24,7 +29,7 @@
 		//TODO, add a way of updating a db
 		// let new_comp = components.filter(c => c.props.id === event.detail.id);
 		// components.map(obj => obj.props.id === event.detail.id ? obj.props=event.detail : obj=obj);
-		console.log(components);
+		// console.log(components);
 	}
 </script>
 
