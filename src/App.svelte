@@ -1,10 +1,11 @@
 <script>
-	import { onMount } from "svelte";
-	import AudioPlayer from "./components/AudioPlayer.svelte";
+	// import { onMount } from "svelte";
 	import Meditation from "./components/Meditation.svelte";
 	import Nav from "./components/Nav.svelte";
 	import Table from "./components/Table.svelte";
-	import TextArea from "./components/TextArea.svelte";
+    import TextArea from "./components/TextArea.svelte";
+// import Component from "./components/Component.svelte";
+
 	
 	let components = [
 						{type: Nav, props: {}},
@@ -35,6 +36,8 @@
 
 <main>
 	{#each components as component}
+		<!-- <Component props={component}/> -->
+
 		<svelte:component this={component.type} on:updated={update} {...component.props}/>
 	{/each}
 </main>

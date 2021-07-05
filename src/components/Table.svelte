@@ -9,7 +9,7 @@
 
     function toggleEdit(){
         if(editing){
-            // console.log(table);
+            console.log(headers, table);
             dispatch('updated', {
                 id:id,
                 table:table
@@ -26,8 +26,8 @@
     }
 
     function addEntry(col, row){
-        table[col] = [...table[col], "..."];
-        console.log("Added to col", col);
+        table[col] = [...table[col], " . . . "];
+        // console.log("Added to col", col);
     }
 
     function delCol(col){
@@ -35,28 +35,30 @@
         headers.splice(col,1);
         table=table;
         headers=headers;
-        console.log("deleted col", table);
+        // console.log("deleted col", table);
     }
 
     function addCol(col){
         headers = [...headers, "New Column"];
-        table = [...table, ["..."]];
-        console.log("Added col", table);
+        table = [...table, [" . . . "]];
+        // console.log("Added col", table);
     }
 
 </script>
 
 <div>
     <br>
-    <span><button on:click={toggleEdit}>{editing ? "s" : "e"}</button></span>
+    <span><button on:click={toggleEdit}>{editing ? "Save" : "Edit"}</button></span>
     <br>
 <div class="flex">
     {#each headers as header, i}
-        <div class="column entry">
+        <div class="column">
             <div class="entry">
                 {#if editing}
-                    <h3 contenteditable=true bind:textContent={headers[i]}>{header}</h3>
+
+                    <span  contenteditable=true bind:textContent={headers[i]}>{header}</span>
                     <button class="button danger" on:click={() => delCol(i)}>-</button>
+
                 {:else}
                 <h3>{header}</h3>
                 {/if}
@@ -66,10 +68,10 @@
                 <div class="entry">   
                     <input type=checkbox/> 
                     {#if editing}
-                        <span contenteditable=true bind:textContent={table[i][j]}>{row}</span>
-                        <span><button class="button danger" on:click={() => delEntry(i,j)}>-</button></span>
+                    <span contenteditable=true bind:textContent={table[i][j]}>{row}</span>
+                    <button class="button danger" on:click={() => delEntry(i,j)}>-</button>
                     {:else}
-                        <span>{row}</span>
+                    <span>{row}</span>
                     {/if}
                 </div>
 
@@ -94,20 +96,17 @@
 
 <style>
     .flex{
-        display: inline-flex;
-
-    }
-
-    .column{
-        margin-inline: 20 px;
+        display: flex;
+        flex-wrap: wrap;
+        gap:20px
     }
 
     .button {
        opacity: 0%;
-       height: min-content;
+       max-height: fit-content;
     }
 
-    .entry:hover > .button {
+    .entry:hover  .button {
         opacity:100%;
         border:none;
     }
