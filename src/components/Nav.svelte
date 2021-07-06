@@ -10,7 +10,7 @@
     console.log("from Nav:", sites_editing);
 
     function addSite(){
-        sites = [...sites, {text:"Display Name", url: "https:/adriansalustri.com"}];
+        sites = [...sites, {text:"Link Name", url: "ex. https://google.com"}];
         sites_editing = [...sites_editing, true];
         console.log("from Nav:", sites, sites_editing);
 
@@ -29,28 +29,36 @@
 
 </script>
 
-<span>
+
+<div class:flex={!edit_state}>
     {#each sites as site, i}
         {#if edit_state}
+        <div>
             {#if sites_editing[i]}
                 <input bind:value={site.url}>
                 <input bind:value={site.text}>
             {:else}
-                 <a href={site.url} target="_blank">{site.text} | </a>
+                 <a href={site.url} target="_blank">{site.text}</a>
             {/if}
             <button on:click={() => sites_editing[i] = !sites_editing[i]}>{sites_editing[i] ? "Save": "Edit"}</button>
             <button class="danger" on:click={() => removeSite(i)}>-</button>
+        </div>
         {:else}
-            <a href={site.url} target="_blank">{site.text} | </a>
+            <a href={site.url} target="_blank">{site.text}</a>
         {/if}
     {/each}
 
     {#if edit_state}
         <button on:click={addSite}>+</button>
     {/if}
-</span>
+    </div>
 
 <style>
+    .flex{
+        display: flex;
+        flex-wrap: wrap;
+        gap:20px;
+    }
     .danger{
         background-color:lightcoral;
     }

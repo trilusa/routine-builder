@@ -41,7 +41,7 @@
 </script>
 
 <main>
-	<button on:click={() => edit_store.update(state => !state)}>{edit_state ? "Save" : "Edit"}</button>
+	<button style="float: right;" on:click={() => edit_store.update(state => !state)}>{edit_state ? "Save" : "Edit"}</button>
 	<div>
 	{#each components as component}
 		<!-- <Component props={component}/> -->
@@ -51,8 +51,10 @@
 	</div>
 </main>
 
-
 <style>
+	button {
+		float: right;
+	}
 	@media (min-width: 640px) {
 		main {
 			max-width: none;
