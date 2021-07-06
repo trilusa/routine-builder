@@ -1,22 +1,15 @@
 <script>
     import { createEventDispatcher } from 'svelte';
+    import { edit_store } from "../stores.js"
+
 	const dispatch = createEventDispatcher();
 
     export let table;
     export let headers;
     export let id;
-    let editing = false;
 
-    function toggleEdit(){
-        if(editing){
-            console.log(headers, table);
-            dispatch('updated', {
-                id:id,
-                table:table
-            } );
-        }
-        editing = !editing;
-    }
+    let editing;
+    edit_store.subscribe(val => {editing = val});
 
     function delEntry(col, row){
         table[col].splice(row,1);
@@ -46,10 +39,7 @@
 
 </script>
 
-<div>
-    <br>
-    <span><button on:click={toggleEdit}>{editing ? "Save" : "Edit"}</button></span>
-    <br>
+
 <div class="flex">
     {#each headers as header, i}
         <div class="column">
@@ -90,9 +80,7 @@
             
         {/if} 
     {/each}
-   
 </div> 
-</div>
 
 <style>
     .flex{

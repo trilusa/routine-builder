@@ -1,5 +1,9 @@
+<script>
+    export let sites;
+</script>
+
 <span>
-    <a href="https://beta.workflowy.com/" target="_blank">Workflowy | </a>
-    <a href="https://app.wakingup.com/" target="_blank">Waking Up | </a>
-    <a href="https://calendar.google.com/calendar/r?opentasks=1" target="_blank">Calendar</a>
+    {#each sites as site}
+        <a href={site.url} target="_blank">{site.text} | </a>
+    {/each}
 </span>

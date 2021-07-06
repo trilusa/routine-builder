@@ -1,5 +1,6 @@
 <script>
-	// import { onMount } from "svelte";
+	// import { onMount } from "svelte"
+	import { edit_store } from "./stores.js"
 	import Meditation from "./components/Meditation.svelte";
 	import Nav from "./components/Nav.svelte";
 	import Table from "./components/Table.svelte";
@@ -8,15 +9,16 @@
 
 	
 	let components = [
-						{type: Nav, props: {}},
+						{type: Nav, props: {sites: [
+												{text: "Workflowy", url: "https://beta.workflowy.com/"},
+												{text: "Waking Up", url: "https://app.wakingup.com/"},
+												{text: "Calendar", url: "https://calendar.google.com/calendar/r?opentasks=1"}
+												]}},
 						{type: Table, props: {  id: "reminder-table",
 												headers: ["Morning", "Afternoon", "Night"],
 												table: [["Meds", "Brush", "Water", "Sun"],
 														["Walk", "Meditate", "Water", "Lunch"],
 														["Meds", "Meditate", "Read", "Stretch"]]}
-
-												// table: [ {header: "Morning", entries: ["Meds", "Brush", "Water", "Sun"]},
-												// 	   {header: "Afternoon", entries: ["Walk", "Meditate", "Water", "Lunch"]} ]}
 						},
 						{type: TextArea, props: {}},
 						{type: Meditation, props: {}}
@@ -32,14 +34,21 @@
 		// components.map(obj => obj.props.id === event.detail.id ? obj.props=event.detail : obj=obj);
 		// console.log(components);
 	}
+
+	let edit_state;
+	edit_store.subscribe(val => {edit_state = val});
+
 </script>
 
 <main>
+	<button on:click={() => edit_store.update(state => !state)}>{edit_state ? "Save" : "Edit"}</button>
+	<div>
 	{#each components as component}
 		<!-- <Component props={component}/> -->
 
 		<svelte:component this={component.type} on:updated={update} {...component.props}/>
 	{/each}
+	</div>
 </main>
 
 
