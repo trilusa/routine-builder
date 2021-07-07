@@ -22,7 +22,7 @@
 														["Walk", "Meditate", "Water", "Lunch"],
 														["Meds", "Meditate", "Read", "Stretch"]]}
 						},
-						{type: TextArea, props: {}},
+						{type: Timer, props: {days: 0, hours: 0, minutes: 0, seconds:60}},
 						{type: Meditation, props: {}}
 					];
 					
@@ -53,7 +53,7 @@
 	{/each}
 	</div>
 	<Clock/>
-	<Timer set_time=5000/>
+	<!-- <Timer set_time={60}/> -->
 </main>
 
 <style>

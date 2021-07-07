@@ -17,13 +17,13 @@ export const clock = function(options={}) {
   })
 }
 
-export function toHuman (ms) {
-    const seconds = Math.floor((ms / 1000) % 60);
-    const minutes = Math.floor((ms / 1000 / 60) % 60);
-    const hours = Math.floor((ms  / 1000 / 3600 ) % 24);
+export function toHuman (s) {
+    const seconds = Math.floor(s % 60);
+    const minutes = Math.floor((s / 60) % 60);
+    const hours = Math.floor((s / 3600 ) % 24);
 
-    return [hours.toString().padStart(2, '0'),
-    minutes.toString().padStart(2, '0'),
-        seconds.toString().padStart(2, '0')
-    ].join(':');
+    return [hours > 0 ? hours.toString() + ":" : '',
+            minutes.toString().padStart(2, '0') + ":",
+            seconds.toString().padStart(2, '0')
+    ].join('');
 }

@@ -23,7 +23,7 @@
         sites=sites;
         sites_editing=sites_editing;
 
-        console.log("from Nav:", sites, sites_editing);
+        // console.log("from Nav:", sites, sites_editing);
 
     }
 
