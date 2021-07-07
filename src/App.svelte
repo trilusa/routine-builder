@@ -1,10 +1,12 @@
 <script>
 	// import { onMount } from "svelte"
-	import { edit_store } from "./stores.js"
+	import { edit_store } from "./stores.js";
+	
 	import Meditation from "./components/Meditation.svelte";
 	import Nav from "./components/Nav.svelte";
 	import Table from "./components/Table.svelte";
-    import TextArea from "./components/TextArea.svelte";
+	import TextArea from "./components/TextArea.svelte";
+	import Clock from "./components/Clock.svelte";
 // import Component from "./components/Component.svelte";
 
 	
@@ -41,6 +43,7 @@
 </script>
 
 <main>
+	
 	<button style="float: right;" on:click={() => edit_store.update(state => !state)}>{edit_state ? "Save" : "Edit"}</button>
 	<div>
 	{#each components as component}
@@ -49,6 +52,7 @@
 		<svelte:component this={component.type} on:updated={update} {...component.props}/>
 	{/each}
 	</div>
+	<Clock/>
 </main>
 
 <style>
