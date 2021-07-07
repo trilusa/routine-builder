@@ -1,5 +1,4 @@
 <script>
-	// import { onMount } from "svelte"
 	import { edit_store } from "./stores.js";
 	
 	import Meditation from "./components/Meditation.svelte";
@@ -7,6 +6,7 @@
 	import Table from "./components/Table.svelte";
 	import TextArea from "./components/TextArea.svelte";
 	import Clock from "./components/Clock.svelte";
+	import Timer from "./components/Timer.svelte";
 // import Component from "./components/Component.svelte";
 
 	
@@ -53,6 +53,7 @@
 	{/each}
 	</div>
 	<Clock/>
+	<Timer set_time=5000/>
 </main>
 
 <style>

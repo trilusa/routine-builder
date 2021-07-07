@@ -1,6 +1,6 @@
 import { readable } from 'svelte/store'
 
-export const timer = function(options={}) {
+export const clock = function(options={}) {
   return readable(null, set => {
     // the update function sets the latest date
     const update = () => set(new Date())
@@ -13,6 +13,17 @@ export const timer = function(options={}) {
 		
     // return unsubscribe callback:
     // it will stop the timer when the store is destroyed
-    return () => clearInterval(interval)
+    return () => {clearInterval(interval); console.log("clock unsub")};
   })
+}
+
+export function toHuman (ms) {
+    const seconds = Math.floor((ms / 1000) % 60);
+    const minutes = Math.floor((ms / 1000 / 60) % 60);
+    const hours = Math.floor((ms  / 1000 / 3600 ) % 24);
+
+    return [hours.toString().padStart(2, '0'),
+    minutes.toString().padStart(2, '0'),
+        seconds.toString().padStart(2, '0')
+    ].join(':');
 }

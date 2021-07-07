@@ -1,9 +1,10 @@
 <script>
-    import {timer} from "../timer.js";
-    const clock = timer();
+    import {clock} from "../timer.js";
+    const time = clock();
 </script>
+
 <div>
- {$clock.toLocaleString()}
+    {$time.toLocaleString()}
 </div>
 
 <style>
