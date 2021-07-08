@@ -26,6 +26,9 @@
         } else {
             state = DONE;
             clearInterval(timer);
+            var audio = new Audio('https://onlineclock.net/audio/options/default.mp3');
+            audio.play();
+
         } 
     }
 
@@ -51,12 +54,13 @@
 
 </script>
 
+<h2>Timer</h2>
 <div class="flex">
     {#if state == INPUT}
         <!-- <input type="number" bind:value={days}>days : -->
-        <input type="number" bind:value={hours}> <p>h</p>
-        <input type="number" bind:value={minutes}> <p>m</p>
-        <input type="number" bind:value={seconds}> <p>s </p> 
+        <input type="number" min="0" bind:value={hours}> <p>h</p>
+        <input type="number" min="0" bind:value={minutes}> <p>m</p>
+        <input type="number" min="0" bind:value={seconds}> <p>s </p> 
         <button on:click={onStart}>Start</button>
     {:else if state === DONE}
         <p>{time_str}</p> 
